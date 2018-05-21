@@ -10,13 +10,19 @@ var colors = [
 var squares = document.querySelectorAll('.square');
 var pickedColor = colors[3];
 var displayColor = document.querySelector('#display');
+var message = document.getElementById('message');
 
-function squareRandom () {
+function squareRandom() {
     for (var i = 0; squares.length; i++) {
         squares[i].style.backgroundColor = colors[i];
+
         squares[i].addEventListener('click', function () {
             if (this.style.backgroundColor === pickedColor) {
-                console.log(pickedColor);
+                message.textContent = "CORRECT!!!";
+                changeColors();
+            } else {
+                this.style.backgroundColor = '#232323';
+                message.textContent = "TRY AGAIN!!!";
             }
         });    
     }   
@@ -37,6 +43,12 @@ function pickedColorDisplay() {
 
 // }
 
+function changeColors() {
+    for (var i = 0; squares.length; i++) {
+            squares[i].style.backgroundColor === pickedColor;
+                console.log('clicked');           
+    }
+}
 
 pickedColorDisplay();
 // colorMatch();
