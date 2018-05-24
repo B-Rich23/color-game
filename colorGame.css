@@ -30,3 +30,7 @@ h1 {
     text-align: center;
     color: #232323;
 }
+
+.selected {
+    background-color: blue;
+}

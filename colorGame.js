@@ -10,6 +10,9 @@ var displayColor = document.querySelector('#display');
 var message = document.getElementById('message');
 var h1 = document.querySelector('h1');
 var reset = document.querySelector('#new');
+var easy = document.querySelector('#easy');
+var hard = document.getElementById('hard');
+var isHard = true;
 
 // helper function that selects random color from colors array
 function randomColor() {
@@ -48,7 +51,7 @@ function generateRandomColors(num) {
 
 /* helper function that changes the background color of all the squares and the background color of the h1 element to match the pickedColor variable */
 function changeColors() {
-    for (var i = 0; squares.length; i++) {
+    for (var i = 0; i < squares.length; i++) {
         squares[i].style.backgroundColor = pickedColor;
         h1.style.backgroundColor = pickedColor;
     }
@@ -75,14 +78,45 @@ function squareRandom() {
     }
 }
 
+hard.addEventListener('click', function() {
+    isHard = true;
+    hard.classList.add('selected');
+    easy.classList.remove('selected');
+    for (var i = 0; i < colors.length; i++) {
+        squares[i].style.display = 'block';
+    }
+});
+
+easy.addEventListener('click', function() {
+    isHard = false;
+    easy.classList.add('selected');
+    hard.classList.remove('selected');
+    colors = generateRandomColors(3);
+    pickedColor = randomColor();
+    pickedColorDisplay();
+    for (var i = 0; i < colors.length; i++) {
+        if (i > 2) {
+            squares[i].style.display = 'none';
+
+        }
+    }
+});
 
 function newGame () {
     reset.addEventListener('click', function() {
-        colors = generateRandomColors(6);
-        pickedColor = randomColor();
-        pickedColorDisplay();
-        reset.textContent = "New Colors";
-        squareRandom();
+        if (isHard === true) {
+            colors = generateRandomColors(6);
+            pickedColor = randomColor();
+            pickedColorDisplay();
+            reset.textContent = "New Colors";
+            squareRandom();
+        } else {
+            colors = generateRandomColors(3);
+            pickedColor = randomColor();
+            pickedColorDisplay();
+            reset.textContent = "New Colors";
+            squareRandom();
+        }
     });
 }
 
