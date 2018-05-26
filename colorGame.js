@@ -61,7 +61,12 @@ function changeColors() {
 function squareRandom() {
 
     for (var i = 0; squares.length; i++) {
-        squares[i].style.backgroundColor = colors[i];
+        if (colors[i]) {
+            squares[i].style.backgroundColor = colors[i];
+            squares[i].style.display = 'block';
+        } else {
+            squares[i].style.display = 'none';
+            }
         h1.style.backgroundColor = '#232323';
 
         squares[i].addEventListener('click', function () {
@@ -82,9 +87,10 @@ hard.addEventListener('click', function() {
     isHard = true;
     hard.classList.add('selected');
     easy.classList.remove('selected');
-    for (var i = 0; i < colors.length; i++) {
-        squares[i].style.display = 'block';
-    }
+    colors = generateRandomColors(6);
+    pickedColor = randomColor();
+    pickedColorDisplay();
+    squareRandom();
 });
 
 easy.addEventListener('click', function() {
@@ -94,12 +100,7 @@ easy.addEventListener('click', function() {
     colors = generateRandomColors(3);
     pickedColor = randomColor();
     pickedColorDisplay();
-    for (var i = 0; i < colors.length; i++) {
-        if (i > 2) {
-            squares[i].style.display = 'none';
-
-        }
-    }
+    squareRandom();
 });
 
 function newGame () {
