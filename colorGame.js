@@ -67,7 +67,7 @@ function squareRandom() {
         } else {
             squares[i].style.display = 'none';
             }
-        h1.style.backgroundColor = '#232323';
+        h1.style.backgroundColor = 'steelblue';
 
         squares[i].addEventListener('click', function () {
             if (this.style.backgroundColor === pickedColor) {
