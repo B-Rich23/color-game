@@ -38,15 +38,12 @@ function makeColor() {
 function generateRandomColors(num) {
     // make array
     var arr = [];
-
     // add number of random colors to array
     for (var i = 0; i < num; i++) {
         arr.push(makeColor());
     }
-
     // return array
     return arr;
-
 }
 
 /* helper function that changes the background color of all the squares and the background color of the h1 element to match the pickedColor variable */
@@ -59,7 +56,6 @@ function changeColors() {
 
 
 function squareRandom() {
-
     for (var i = 0; squares.length; i++) {
         if (colors[i]) {
             squares[i].style.backgroundColor = colors[i];
@@ -110,12 +106,14 @@ function newGame () {
             pickedColor = randomColor();
             pickedColorDisplay();
             reset.textContent = "New Colors";
+            message.textContent = "";
             squareRandom();
         } else {
             colors = generateRandomColors(3);
             pickedColor = randomColor();
             pickedColorDisplay();
             reset.textContent = "New Colors";
+            message.textContent = "";
             squareRandom();
         }
     });
