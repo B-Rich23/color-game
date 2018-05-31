@@ -1,9 +1,5 @@
 var colors = generateRandomColors(6);
-
-
-// var colors = [
-
-// ];
+// var colors = [];
 var pickedColor = randomColor();
 var squares = document.querySelectorAll('.square');
 var displayColor = document.querySelector('#display');
@@ -99,22 +95,21 @@ easy.addEventListener('click', function() {
     squareRandom();
 });
 
+function difficulty(num) {
+    colors = generateRandomColors(num);
+    pickedColor = randomColor();
+    pickedColorDisplay();
+    reset.textContent = "New Colors";
+    message.textContent = "";
+    squareRandom();
+}
+
 function newGame () {
     reset.addEventListener('click', function() {
         if (isHard === true) {
-            colors = generateRandomColors(6);
-            pickedColor = randomColor();
-            pickedColorDisplay();
-            reset.textContent = "New Colors";
-            message.textContent = "";
-            squareRandom();
+            difficulty(6);
         } else {
-            colors = generateRandomColors(3);
-            pickedColor = randomColor();
-            pickedColorDisplay();
-            reset.textContent = "New Colors";
-            message.textContent = "";
-            squareRandom();
+            difficulty(3);
         }
     });
 }
