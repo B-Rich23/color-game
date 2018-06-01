@@ -75,41 +75,39 @@ function squareRandom() {
     }
 }
 
+function difficultyButton(num) {
+    colors = generateRandomColors(num);
+    pickedColor = randomColor();
+    pickedColorDisplay();
+    squareRandom();
+}
+
 hard.addEventListener('click', function() {
     isHard = true;
     hard.classList.add('selected');
     easy.classList.remove('selected');
-    colors = generateRandomColors(6);
-    pickedColor = randomColor();
-    pickedColorDisplay();
-    squareRandom();
+    difficultyButton(6);
 });
 
 easy.addEventListener('click', function() {
     isHard = false;
     easy.classList.add('selected');
     hard.classList.remove('selected');
-    colors = generateRandomColors(3);
-    pickedColor = randomColor();
-    pickedColorDisplay();
-    squareRandom();
+    difficultyButton(3);
 });
 
-function difficulty(num) {
-    colors = generateRandomColors(num);
-    pickedColor = randomColor();
-    pickedColorDisplay();
+function difficultyReset(num) {
     reset.textContent = "New Colors";
     message.textContent = "";
-    squareRandom();
+    difficultyButton(num);
 }
 
 function newGame () {
     reset.addEventListener('click', function() {
         if (isHard === true) {
-            difficulty(6);
+            difficultyReset(6);
         } else {
-            difficulty(3);
+            difficultyReset(3);
         }
     });
 }
