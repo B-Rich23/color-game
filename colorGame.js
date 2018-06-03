@@ -1,5 +1,4 @@
 var colors = generateRandomColors(6);
-// var colors = [];
 var pickedColor = randomColor();
 var squares = document.querySelectorAll('.square');
 var displayColor = document.querySelector('#display');
@@ -59,7 +58,7 @@ function squareRandom() {
         } else {
             squares[i].style.display = 'none';
             }
-        h1.style.backgroundColor = 'steelblue';
+        h1.style.backgroundColor = '#396afc';
 
         squares[i].addEventListener('click', function () {
             if (this.style.backgroundColor === pickedColor) {
